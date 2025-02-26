@@ -92,7 +92,7 @@ def course_recommender(course_list):
 
 
 # sql connector
-connection = pymysql.connect(host='localhost',user='root',password='root@MySQL4admin',db='cv')
+connection = pymysql.connect(host='localhost',user='root',password='',db='cv')
 cursor = connection.cursor()
 
 
@@ -131,12 +131,83 @@ st.set_page_config(
 def run():
     
     # (Logo, Heading, Sidebar etc)
-    img = Image.open('./Logo/RESUM.png')
-    st.image(img)
+    # img = Image.open('./Logo/Upper_image.png')
+    # st.image(img)
+    
+    # st.markdown('''<h1 style='text-align: center; color: #021659;'>AI Resume Analyzer</h1>''',unsafe_allow_html=True)
+    st.markdown('''
+    <div style="
+        background: linear-gradient(-45deg, #021659, #1a73e8, #021659);
+        background-size: 400% 400%;
+        animation: gradient 15s ease infinite;
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    ">
+        <h1 style='
+            text-align: center; 
+            color: white;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: float 3s ease-in-out infinite;
+            margin: 0;
+            padding: 15px;
+        '>
+            🚀 AI Resume Analyzer
+        </h1>
+        <p style='
+            text-align: center;
+            color: #ffffffaa;
+            font-size: 1.2em;
+            animation: fadeIn 2s;
+            margin: 10px 0 0;
+        '>
+            Smart Analysis • Career Recommendations • Instant Feedback
+        </p>
+        <p style='
+            text-align: center;
+            color: #ffffffaa;
+            font-size: 1.2em;
+            animation: fadeIn 2s;
+            margin: 10px 0 0;
+        '>
+            Made By
+        </p>
+        <p style='
+            text-align: center;
+            color: #BB0C0CAA;
+            font-size: 2.5em;
+            animation: fadeIn 2s;
+            margin: 10px 0 0;
+        '>
+            Farid , Sarafat and  Hasib
+        </p>
+    </div>
+
+    <style>
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+''', unsafe_allow_html=True)
+    
     st.sidebar.markdown("# Choose Something...")
     activities = ["User", "Feedback", "About", "Admin"]
     choice = st.sidebar.selectbox("Choose among the given options:", activities)
-    link = '<b>Built with 🤍 by <a href="https://dnoobnerd.netlify.app/" style="text-decoration: none; color: #021659;">Deepak Padhi</a></b>' 
+    link = '<b>Built with 🤍 by <a href="" style="text-decoration: none; color: #021659;">Farid , Sarafat, Hasib</a></b>' 
     st.sidebar.markdown(link, unsafe_allow_html=True)
     st.sidebar.markdown('''
         <!-- site visitors -->
@@ -149,7 +220,7 @@ def run():
             </a>
         </noscript>
     
-        <p>Visitors <img src="https://counter9.stat.ovh/private/freecounterstat.php?c=t2xghr8ak6lfqt3kgru233378jya38dy" title="Free Counter" Alt="web counter" width="60px"  border="0" /></p>
+        
     
     ''', unsafe_allow_html=True)
 
@@ -235,7 +306,39 @@ def run():
 
 
         # Upload Resume
-        st.markdown('''<h5 style='text-align: left; color: #021659;'> Upload Your Resume, And Get Smart Recommendations</h5>''',unsafe_allow_html=True)
+        st.markdown('''
+    <div style="overflow: hidden;">
+        <h5 style='
+            text-align: left; 
+            color: #021659;
+            animation: slideIn 1.2s ease-out forwards;
+            opacity: 0;
+            transform: translateX(-100%);
+            padding: 10px;
+            border-left: 4px solid #1a73e8;
+            margin: 15px 0;
+        '>
+            📄 Upload Your Resume, And Get Smart Recommendations
+        </h5>
+    </div>
+
+    <style>
+        @keyframes slideIn {
+            0% {
+                opacity: 0;
+                transform: translateX(-100%);
+            }
+            80% {
+                opacity: 1;
+                transform: translateX(10%);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+    </style>
+''', unsafe_allow_html=True)
         
         ## file upload in pdf format
         pdf_file = st.file_uploader("Choose your Resume", type=["pdf"])
@@ -649,12 +752,7 @@ def run():
             For login use <b>admin</b> as username and <b>admin@resume-analyzer</b> as password.<br/>
             It will load all the required stuffs and perform analysis.
         </p><br/><br/>
-
-        <p align="justify">
-            Built with 🤍 by 
-            <a href="https://dnoobnerd.netlify.app/" style="text-decoration: none; color: grey;">Deepak Padhi</a> through 
-            <a href="https://www.linkedin.com/in/mrbriit/" style="text-decoration: none; color: grey;">Dr Bright --(Data Scientist)</a>
-        </p>
+       
 
         ''',unsafe_allow_html=True)  
 
